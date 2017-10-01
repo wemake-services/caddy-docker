@@ -5,7 +5,7 @@ LABEL maintainer="Nikita Sobolev <sobolevn@wemake.services>"
 ARG VERSION="0.10.9"
 
 RUN apk update && apk upgrade && \
-  apk add --no-cache ca-certificates openssh-client git tar curl
+  apk add --no-cache openssh-client git tar
 
 RUN curl --silent --show-error --fail --location \
       --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
