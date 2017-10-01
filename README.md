@@ -19,12 +19,37 @@ This project is licensed under MIT. See [LICENSE.md](LICENSE.md) for details.
 docker run -p 2015:2015 wemakeservices/caddy-docker
 ```
 
+### docker-compose example
+
+This image is created be used in `docker-compose.yml`. Here's an example:
+
+```yaml
+version: '2'
+services:
+  caddy:
+    image: "wemakeservices/caddy-docker:latest"
+    volumes:
+      - ./docker/caddy/Caddyfile:/root/.caddy/Caddyfile
+    ports:
+      - "2015:2015"
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+
+  web:
+    build: .
+    command: command: python manage.py runserver 0.0.0.0:5000
+    ports:
+      - "5000:5000"
+```
+
 ### Changing default Caddyfile
 
 Just specify another `Caddyfile` via command line:
 
 ```bash
-docker run -p 2015:2015 -v $PWD/test/Caddyfile:/root/.caddy/Caddyfile caddy:latest
+docker run -p 2015:2015 -v $PWD/test/Caddyfile:/root/.caddy/Caddyfile wemakeservices/caddy-docker
 ```
 
 ### Changing Caddy's version
