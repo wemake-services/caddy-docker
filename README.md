@@ -29,7 +29,7 @@ services:
   caddy:
     image: "wemakeservices/caddy-docker:latest"
     volumes:
-      - ./docker/caddy/Caddyfile:/root/.caddy/Caddyfile
+      - ./path/to/your/Caddyfile:/root/.caddy/Caddyfile
     ports:
       - "2015:2015"
       - "80:80"
@@ -39,7 +39,7 @@ services:
 
   web:
     build: .
-    command: command: python manage.py runserver 0.0.0.0:5000
+    command: python manage.py runserver 0.0.0.0:5000
     ports:
       - "5000:5000"
 ```
