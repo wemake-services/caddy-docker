@@ -4,6 +4,8 @@
 
 A `docker` image for [Caddy](https://caddyserver.com).
 
+![Caddy](https://caddyserver.com/resources/images/brand/caddy-black.png)
+
 
 ## License
 
@@ -21,7 +23,7 @@ docker run -p 2015:2015 wemakeservices/caddy-docker
 
 ### docker-compose example
 
-This image is created be used in `docker-compose.yml`. Here's an example:
+This image is created to be used in `docker-compose.yml`. Here's an example:
 
 ```yaml
 version: '2'
