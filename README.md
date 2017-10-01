@@ -1,4 +1,6 @@
-# caddy [![caddy's version](https://img.shields.io/badge/version-0.10.9-blue.svg)](https://github.com/mholt/caddy/tree/v0.10.9)
+# caddy
+
+[![wemake.services](https://img.shields.io/badge/style-wemake.services-green.svg?label=&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP%2F%2F%2F5TvxDIAAAAIdFJOUwAjRA8xXANAL%2Bv0SAAAADNJREFUGNNjYCAIOJjRBdBFWMkVQeGzcHAwksJnAPPZGOGAASzPzAEHEGVsLExQwE7YswCb7AFZSF3bbAAAAABJRU5ErkJggg%3D%3D)](http://wemake.services) [![Build Status](https://travis-ci.org/wemake-services/caddy-docker.svg?branch=master)](https://travis-ci.org/wemake-services/caddy-docker) [![caddy's version](https://img.shields.io/badge/version-0.10.9-blue.svg)](https://github.com/mholt/caddy/tree/v0.10.9)
 
 A `docker` image for [Caddy](https://caddyserver.com).
 
@@ -8,12 +10,29 @@ A `docker` image for [Caddy](https://caddyserver.com).
 This image uses a [release from `github`](https://github.com/mholt/caddy/releases), so it is a subject to the project's [Apache 2.0 license](https://github.com/mholt/caddy/blob/master/LICENSE.txt) and not to [the EULA license](https://github.com/mholt/caddy/blob/master/dist/EULA.txt).
 
 You can use it for almost everything.
+This project is licensed under MIT. See [LICENSE.md](LICENSE.md) for details.
 
 
 ## Running
 
 ```bash
-docker run -p 2015:2015 wemake.services/caddy
+docker run -p 2015:2015 wemakeservices/caddy-docker
+```
+
+### Changing default Caddyfile
+
+Just specify another `Caddyfile` via command line:
+
+```bash
+docker run -p 2015:2015 -v $PWD/test/Caddyfile:/root/.caddy/Caddyfile caddy:latest
+```
+
+### Changing Caddy's version
+
+This image supports `VERSION` build-time argument:
+
+```bash
+docker build --build-arg VERSION=0.10.0 -t caddy:0.10.0 .
 ```
 
 
@@ -30,4 +49,3 @@ And then run it locally:
 ```bash
 docker run -p 2015:2015 caddy:latest
 ```
-

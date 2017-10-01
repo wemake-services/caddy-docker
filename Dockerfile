@@ -17,7 +17,7 @@ RUN curl --silent --show-error --fail --location \
 EXPOSE 80 443 2015
 VOLUME /root/.caddy
 
-COPY Caddyfile /etc/Caddyfile
+COPY Caddyfile /root/.caddy/Caddyfile
 
 ENTRYPOINT ["/usr/bin/caddy"]
-CMD ["--conf", "/etc/Caddyfile", "--log", "stdout"]
+CMD ["--conf", "/root/.caddy/Caddyfile", "--log", "stdout"]

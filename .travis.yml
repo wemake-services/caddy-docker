@@ -1,0 +1,14 @@
+language: python
+python:
+  - 3.6
+
+services:
+  - docker
+
+install:
+  - docker build -t caddy:latest .
+  - docker run -d -p 2015:2015 --name caddy caddy
+
+script:
+  - docker ps | grep -q caddy  # there should be a docker process
+  - curl 127.0.0.1:2015  # it should be available
