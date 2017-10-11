@@ -1,6 +1,6 @@
 # caddy
 
-[![wemake.services](https://img.shields.io/badge/style-wemake.services-green.svg?label=&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP%2F%2F%2F5TvxDIAAAAIdFJOUwAjRA8xXANAL%2Bv0SAAAADNJREFUGNNjYCAIOJjRBdBFWMkVQeGzcHAwksJnAPPZGOGAASzPzAEHEGVsLExQwE7YswCb7AFZSF3bbAAAAABJRU5ErkJggg%3D%3D)](http://wemake.services) [![Build Status](https://travis-ci.org/wemake-services/caddy-docker.svg?branch=master)](https://travis-ci.org/wemake-services/caddy-docker) [![image size](https://images.microbadger.com/badges/image/wemakeservices/caddy-docker.svg)](https://microbadger.com/images/wemakeservices/caddy-docker) [![caddy's version](https://img.shields.io/badge/version-0.10.9-blue.svg)](https://github.com/mholt/caddy/tree/v0.10.9)
+[![wemake.services](https://img.shields.io/badge/style-wemake.services-green.svg?label=&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP%2F%2F%2F5TvxDIAAAAIdFJOUwAjRA8xXANAL%2Bv0SAAAADNJREFUGNNjYCAIOJjRBdBFWMkVQeGzcHAwksJnAPPZGOGAASzPzAEHEGVsLExQwE7YswCb7AFZSF3bbAAAAABJRU5ErkJggg%3D%3D)](http://wemake.services) [![Build Status](https://travis-ci.org/wemake-services/caddy-docker.svg?branch=master)](https://travis-ci.org/wemake-services/caddy-docker) [![Dockerhub](https://img.shields.io/docker/pulls/wemakeservices/caddy-docker.svg)](https://hub.docker.com/r/wemakeservices/caddy-docker/) [![image size](https://images.microbadger.com/badges/image/wemakeservices/caddy-docker.svg)](https://microbadger.com/images/wemakeservices/caddy-docker) [![caddy's version](https://img.shields.io/badge/version-0.10.9-blue.svg)](https://github.com/mholt/caddy/tree/v0.10.9)
 
 ![Caddy](https://caddyserver.com/resources/images/brand/caddy-black.png)
 
@@ -31,7 +31,7 @@ services:
   caddy:
     image: "wemakeservices/caddy-docker:latest"
     volumes:
-      - ./path/to/your/Caddyfile:/root/.caddy/Caddyfile
+      - ./some/path:/root/.caddy
     ports:
       - "2015:2015"
       - "80:80"
@@ -51,8 +51,18 @@ services:
 Just specify another `Caddyfile` via command line:
 
 ```bash
-docker run -p 2015:2015 -v $PWD/test/Caddyfile:/root/.caddy/Caddyfile wemakeservices/caddy-docker
+docker run -p 2015:2015 -v ./test/Caddyfile:/root/.caddy/Caddyfile wemakeservices/caddy-docker
 ```
+
+### Backing-up certificates
+
+Let's Encrypt has [rate limits](https://letsencrypt.org/docs/rate-limits/). It is wise to reuse certificates and back them up:
+
+```bash
+docker run -p 2015:2015 -v ./backup/path:/root/.caddy wemakeservices/caddy-docker
+```
+
+Make sure that `./backup/path` exists. It is also possible to combine this trick with [`Changing default Caddyfile`](https://github.com/wemake-services/caddy-docker#changing-default-caddyfile).
 
 ### Changing Caddy's version
 
