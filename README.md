@@ -52,7 +52,7 @@ services:
 Just specify another `Caddyfile` via command line:
 
 ```bash
-docker run -p 2015:2015 -v ./test/Caddyfile:/etc/Caddyfile wemakeservices/caddy-docker
+docker run -p 2015:2015 -v `pwd`/test/Caddyfile:/etc/Caddyfile wemakeservices/caddy-docker
 ```
 
 ### Backing-up certificates
@@ -60,10 +60,10 @@ docker run -p 2015:2015 -v ./test/Caddyfile:/etc/Caddyfile wemakeservices/caddy-
 Let's Encrypt has [rate limits](https://letsencrypt.org/docs/rate-limits/). It is wise to reuse certificates and back them up:
 
 ```bash
-docker run -p 2015:2015 -v ./backup/path:/root/.caddy wemakeservices/caddy-docker
+docker run -p 2015:2015 -v `pwd`/backup:/root/.caddy wemakeservices/caddy-docker
 ```
 
-Make sure that `./backup/path` exists. It is also possible to combine this trick with [`Changing default Caddyfile`](https://github.com/wemake-services/caddy-docker#changing-default-caddyfile).
+It is also possible to combine this trick with [`Changing default Caddyfile`](https://github.com/wemake-services/caddy-docker#changing-default-caddyfile).
 
 ### Changing Caddy's version
 
