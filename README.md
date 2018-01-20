@@ -74,6 +74,11 @@ docker build --build-arg VERSION=0.10.0 -t caddy:0.10.0 .
 ```
 
 
+## See also
+
+- Automated Caddy reverse proxy for docker containers: [`caddy-gen`](https://github.com/wemake-services/caddy-gen)
+
+
 ## Developing
 
 If you are building a container from source, you will need to build it as follows:
