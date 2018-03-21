@@ -2,7 +2,7 @@ FROM alpine:3.7
 
 LABEL maintainer="Nikita Sobolev <sobolevn@wemake.services>"
 
-ARG VERSION="0.10.10"
+ARG VERSION="0.10.11"
 
 RUN apk update && apk upgrade \
   && apk add --no-cache openssh-client git \
