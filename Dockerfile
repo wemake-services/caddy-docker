@@ -1,8 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.11
 
 LABEL maintainer="Nikita Sobolev <sobolevn@wemake.services>"
 
-ARG VERSION="0.10.11"
+ARG VERSION="1.0.4"
 
 RUN apk update && apk upgrade \
   && apk add --no-cache openssh-client git \
@@ -22,4 +22,4 @@ VOLUME /root/.caddy
 COPY Caddyfile /etc/Caddyfile
 
 ENTRYPOINT ["/usr/bin/caddy"]
-CMD ["--conf", "/etc/Caddyfile", "--log", "stdout"]
+CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree"]
